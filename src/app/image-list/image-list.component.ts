@@ -9,9 +9,10 @@ import { ImageService } from '../shared/image.service';
 export class ImageListComponent implements OnInit {
 
 	images: any[];
+  	
   	constructor(private _imageService: ImageService) { }
 
-  ngOnInit() {
-  }
+  	ngOnInit() {
+  	}
 
 }
