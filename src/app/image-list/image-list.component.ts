@@ -8,21 +8,39 @@ import { ImageService } from '../shared/image.service';
 })
 export class ImageListComponent implements OnInit {
 
-	images: any[];
+	images		: any[];
+	imagesFound	: boolean = false;
+	searching	: boolean = false;
+
+	handleSuccess(data) {
+		console.log(data.hits);
+		this.images = data.hits;
+		if(data.hits.length) {
+			this.imagesFound = true;
+		}
+
+	}
+
+	handleError(err) {
+		let errorMSG = 'An Error Accured! ';
+		console.log(errorMSG + err);
+	}
   	
   	constructor(private _imageService: ImageService) { }
 
   	searchImages(query: string) {
+  		this.searching = true;
+
   		return this._imageService.getImage(query)
   			.subscribe(
   				(data) => {
-  					console.log(data);
+  					this.handleSuccess(data);
   				},
   				(error) => {
-  					console.log(error);
+  					this.handleError(error);
   				},
   				() => {
-  					console.log("Request Complated!")
+  					this.searching = false;
   				}
   			)
   	}

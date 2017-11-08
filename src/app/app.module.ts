@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ImageListComponent } from './image-list/image-list.component';
 
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 
 import { ImageService } from './shared/image.service';
@@ -16,7 +17,7 @@ import { ImageService } from './shared/image.service';
     ImageListComponent
   ],
   imports: [
-    BrowserModule, HttpModule
+    BrowserModule, HttpModule, FormsModule
   ],
   providers: [ ImageService, HttpModule ],
   bootstrap: [AppComponent]
